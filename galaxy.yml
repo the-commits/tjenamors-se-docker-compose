@@ -1,0 +1,16 @@
+namespace: tjenamors
+name: docker_compose
+version: 1.0.0
+readme: README.md
+authors:
+  - the-commits
+description: Ansible role for installing Docker Compose
+license:
+  - AGPL-3.0
+tags:
+  - docker
+  - compose
+  - containers
+dependencies: {}
+repository: https://git.sr.ht/~the-commits/tjenamors-se-docker-compose
+issues: https://git.sr.ht/~the-commits/tjenamors-se-docker-compose

@@ -1,0 +1,42 @@
+---
+- name: Check if docker compose is available
+  ansible.builtin.command: docker compose version
+  changed_when: false
+  failed_when: false
+  register: compose_check
+
+- name: Install docker compose via plugin package
+  ansible.builtin.package:
+    name: docker-compose-plugin
+    state: present
+  when: compose_check.rc != 0
+
+- name: Check again after plugin install
+  ansible.builtin.command: docker compose version
+  changed_when: false
+  failed_when: false
+  register: compose_retry
+
+- name: Install docker compose standalone binary
+  block:
+    - name: Get latest docker compose release
+      ansible.builtin.uri:
+        url: https://api.github.com/repos/docker/compose/releases/latest
+        return_content: true
+      register: gh_release
+
+    - name: Set compose download URL
+      ansible.builtin.set_fact:
+        compose_download_url: >-
+          https://github.com/docker/compose/releases/download/
+          {{ docker_compose_standalone_version }}
+          /docker-compose-linux-{{ ansible_architecture }}
+
+    - name: Download docker compose binary
+      ansible.builtin.get_url:
+        url: "{{ compose_download_url }}"
+        dest: /usr/libexec/docker/cli-plugins/docker-compose
+        mode: "0755"
+  when:
+    - compose_check.rc != 0
+    - compose_retry.rc != 0
