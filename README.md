@@ -1,6 +1,12 @@
 [![sourcehut](https://img.shields.io/badge/sourcehut-~the--commits/tjenamors--se--docker--compose-2d6b9e?logo=sourcehut)](https://git.sr.ht/~the-commits/tjenamors-se-docker-compose)
 [![GitHub mirror](https://img.shields.io/badge/GitHub-the--commits/tjenamors--se--docker--compose-181717?logo=github)](https://github.com/the-commits/tjenamors-se-docker-compose)
 
+> **Do not open issues or pull requests on GitHub** — the mirror there is
+> [read-only](https://git.sr.ht/~the-commits/tjenamors-se-docker-compose).
+> Please use the [sourcehut issue tracker](https://todo.sr.ht/~the-commits/tjenamors-se-docker-compose)
+> and send patches to [~the-commits/tjenamors-se-docker-compose@lists.sr.ht](mailto:~the-commits/tjenamors-se-docker-compose@lists.sr.ht).
+
+
 # tjenamors-se-docker-compose
 
 Ansible role for installing [Docker Compose](https://docs.docker.com/compose/).
